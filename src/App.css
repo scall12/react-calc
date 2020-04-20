@@ -1,5 +1,23 @@
+body {
+  width: 25vw;
+  height: 50vh;
+}
+
+#button-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+button {
+  width: 50px;
+  height: 3rem;
+}
+
 .App {
   text-align: center;
+  border-style: solid;
+  margin: auto;
 }
 
 .App-logo {
