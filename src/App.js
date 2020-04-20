@@ -11,11 +11,7 @@ function Button(props) {
 
 function ButtonList(props) {
   const renderButton = (name) => {
-    return <Button onClick={() => handleClick(name)} name={name} />;
-  };
-
-  const handleClick = (val) => {
-    console.log(val);
+    return <Button onClick={() => props.onClick(name)} name={name} />;
   };
 
   return (
@@ -48,11 +44,15 @@ function ButtonList(props) {
 function App() {
   const [num, setNum] = useState(0);
 
+  const handleClick = (val) => {
+    console.log(val);
+  };
+
   return (
     <>
       <div className=".App">
         <View display={num} />
-        <ButtonList />
+        <ButtonList onClick={(name) => handleClick(name)} />
       </div>
     </>
   );
