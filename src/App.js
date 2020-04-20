@@ -6,36 +6,52 @@ function View(props) {
 }
 
 function Button(props) {
-  return <button onClick={props.onClick}>{props.name}</button>;
+  return (
+    <button className={props.class} onClick={props.onClick}>
+      {props.name}
+    </button>
+  );
 }
 
 function ButtonList(props) {
-  const renderButton = (name) => {
-    return <Button onClick={() => props.onClick(name)} name={name} />;
+  const renderNumButton = (name) => {
+    return (
+      <Button onClick={() => props.onNumClick(name)} name={name} class="num" />
+    );
+  };
+
+  const renderActionButton = (action) => {
+    return (
+      <Button
+        onClick={() => props.onActionClick(action)}
+        name={action}
+        class="action"
+      />
+    );
   };
 
   return (
     <>
       <div id="button-list">
-        {renderButton('AC')}
-        {renderButton('+/-')}
-        {renderButton('%')}
-        {renderButton('÷')}
-        {renderButton(7)}
-        {renderButton(8)}
-        {renderButton(9)}
-        {renderButton('x')}
-        {renderButton(4)}
-        {renderButton(5)}
-        {renderButton(6)}
-        {renderButton('-')}
-        {renderButton(1)}
-        {renderButton(2)}
-        {renderButton(3)}
-        {renderButton('+')}
-        {renderButton(0)}
-        {renderButton('.')}
-        {renderButton('=')}
+        {renderActionButton('AC')}
+        {renderActionButton('+/-')}
+        {renderActionButton('%')}
+        {renderActionButton('÷')}
+        {renderNumButton('7')}
+        {renderNumButton('8')}
+        {renderNumButton('9')}
+        {renderActionButton('x')}
+        {renderNumButton('4')}
+        {renderNumButton('5')}
+        {renderNumButton('6')}
+        {renderActionButton('-')}
+        {renderNumButton('1')}
+        {renderNumButton('2')}
+        {renderNumButton('3')}
+        {renderActionButton('+')}
+        {renderNumButton('0')}
+        {renderNumButton('.')}
+        {renderActionButton('=')}
       </div>
     </>
   );
@@ -45,21 +61,29 @@ function App() {
   const [display, setDisplay] = useState(0);
   const [action, setAction] = useState(null);
 
-  const handleClick = (val) => {
+  const handleNumClick = (val) => {
     if (val === 'AC' || val === 'C') {
       setDisplay(0);
-    } else if (typeof val === 'number' || val === '.') {
-      setDisplay(display * 10 + val);
+    } else if (val.match(/\d/)) {
+      const num = parseInt(val);
+      setDisplay(display * 10 + num);
+    } else if (val === '.') {
+      setDisplay(display + '.');
     } else if (val.match(/\D/) && val !== '.') {
       setAction(val);
     }
   };
 
+  const handleActionClick = (action) => {};
+
   return (
     <>
       <div className=".App">
         <View display={display} />
-        <ButtonList onClick={(name) => handleClick(name)} />
+        <ButtonList
+          onNumClick={(name) => handleNumClick(name)}
+          onActionClick={(action) => handleActionClick(action)}
+        />
       </div>
     </>
   );
