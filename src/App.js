@@ -21,19 +21,19 @@ function ButtonList(props) {
         {renderButton('+/-')}
         {renderButton('%')}
         {renderButton('÷')}
-        {renderButton('7')}
-        {renderButton('8')}
-        {renderButton('9')}
+        {renderButton(7)}
+        {renderButton(8)}
+        {renderButton(9)}
         {renderButton('x')}
-        {renderButton('4')}
-        {renderButton('5')}
-        {renderButton('6')}
+        {renderButton(4)}
+        {renderButton(5)}
+        {renderButton(6)}
         {renderButton('-')}
-        {renderButton('1')}
-        {renderButton('2')}
-        {renderButton('3')}
+        {renderButton(1)}
+        {renderButton(2)}
+        {renderButton(3)}
         {renderButton('+')}
-        {renderButton('0')}
+        {renderButton(0)}
         {renderButton('.')}
         {renderButton('=')}
       </div>
@@ -42,16 +42,23 @@ function ButtonList(props) {
 }
 
 function App() {
-  const [num, setNum] = useState(0);
+  const [display, setDisplay] = useState(0);
+  const [action, setAction] = useState(null);
 
   const handleClick = (val) => {
-    console.log(val);
+    if (val === 'AC' || val === 'C') {
+      setDisplay(0);
+    } else if (typeof val === 'number' || val === '.') {
+      setDisplay(display * 10 + val);
+    } else if (val.match(/\D/) && val !== '.') {
+      setAction(val);
+    }
   };
 
   return (
     <>
       <div className=".App">
-        <View display={num} />
+        <View display={display} />
         <ButtonList onClick={(name) => handleClick(name)} />
       </div>
     </>
