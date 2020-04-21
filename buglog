@@ -1,1 +1,2 @@
 1. If you invert sign twice, it sets the number to 0
+    Fixed with conditional checking if first element in array is a negative sign

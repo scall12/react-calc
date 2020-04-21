@@ -87,10 +87,18 @@ function App() {
     } else if ('+-*/'.includes(val)) {
       setAction(val);
     } else if (val === '+/-') {
-      if (!action) {
+      if (!action && firstNum[0] !== '-') {
         setFirstNum((firstNum) => ['-', ...firstNum]);
-      } else {
+      } else if (!action) {
+        setFirstNum((firstNum) => {
+          const arr = firstNum.slice(1);
+          setFirstNum(arr);
+        });
+      } else if (action && secondNum[0] !== '-') {
         setSecondNum((secondNum) => ['-', ...secondNum]);
+      } else {
+        const arr = secondNum.slice(1);
+        setSecondNum(arr);
       }
     } else if (val === '=') {
       const first = numify(firstNum);
