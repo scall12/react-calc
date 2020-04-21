@@ -68,13 +68,15 @@ function App() {
   const handleNumClick = (val) => {
     if (!action) {
       if (val.match(/\d/) || val === '.') {
-        setFirstNum((firstNum) => [...firstNum, val]);
-        setView((firstNum) => [...firstNum]);
+        const arr = [...firstNum, val];
+        setFirstNum(arr);
+        setView(arr);
       }
     } else {
       if (val.match(/\d/) || val === '.') {
-        setSecondNum((secondNum) => [...secondNum, val]);
-        setView((secondNum) => [...secondNum]);
+        const arr = [...secondNum, val];
+        setSecondNum(arr);
+        setView(arr);
       }
     }
   };
@@ -103,8 +105,10 @@ function App() {
     } else if (val === '=') {
       const first = numify(firstNum);
       const second = numify(secondNum);
-      const newThing = [operator[action](first, second).toString()];
-      setView(newThing);
+      const total = [operator[action](first, second).toString()];
+      setView(total);
+      setFirstNum(total);
+      setSecondNum([]);
       setAction(null);
     }
   };
