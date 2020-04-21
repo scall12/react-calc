@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
+import { operator, numify } from './helpers';
 
 function View(props) {
-  return <div>{props.display}</div>;
+  const number = numify(props.display) || 0;
+  return <div>{number}</div>;
 }
 
 function Button(props) {
@@ -36,11 +38,11 @@ function ButtonList(props) {
         {renderActionButton('AC')}
         {renderActionButton('+/-')}
         {renderActionButton('%')}
-        {renderActionButton('÷')}
+        {renderActionButton('/')}
         {renderNumButton('7')}
         {renderNumButton('8')}
         {renderNumButton('9')}
-        {renderActionButton('x')}
+        {renderActionButton('*')}
         {renderNumButton('4')}
         {renderNumButton('5')}
         {renderNumButton('6')}
@@ -58,28 +60,53 @@ function ButtonList(props) {
 }
 
 function App() {
-  const [display, setDisplay] = useState(0);
+  const [view, setView] = useState([]);
+  const [firstNum, setFirstNum] = useState([]);
+  const [secondNum, setSecondNum] = useState([]);
   const [action, setAction] = useState(null);
 
   const handleNumClick = (val) => {
-    if (val === 'AC' || val === 'C') {
-      setDisplay(0);
-    } else if (val.match(/\d/)) {
-      const num = parseInt(val);
-      setDisplay(display * 10 + num);
-    } else if (val === '.') {
-      setDisplay(display + '.');
-    } else if (val.match(/\D/) && val !== '.') {
-      setAction(val);
+    if (!action) {
+      if (val.match(/\d/) || val === '.') {
+        setFirstNum((firstNum) => [...firstNum, val]);
+        setView((firstNum) => [...firstNum]);
+      }
+    } else {
+      if (val.match(/\d/) || val === '.') {
+        setSecondNum((secondNum) => [...secondNum, val]);
+        setView((secondNum) => [...secondNum]);
+      }
     }
   };
 
-  const handleActionClick = (action) => {};
+  const handleActionClick = (val) => {
+    if (val === 'AC' || val === 'C') {
+      setFirstNum([]);
+      setSecondNum([]);
+      setView([]);
+    } else if ('+-*/'.includes(val)) {
+      setAction(val);
+    } else if (val === '+/-') {
+      if (!action) {
+        setFirstNum((firstNum) => ['-', ...firstNum]);
+      } else {
+        setSecondNum((secondNum) => ['-', ...secondNum]);
+      }
+    } else if (val === '=') {
+      const first = numify(firstNum);
+      const second = numify(secondNum);
+      const newThing = [operator[action](first, second).toString()];
+      setView(newThing);
+      setAction(null);
+    }
+  };
 
   return (
     <>
       <div className=".App">
-        <View display={display} />
+        <View display={firstNum} />
+        <View display={secondNum} />
+        <View display={view} />
         <ButtonList
           onNumClick={(name) => handleNumClick(name)}
           onActionClick={(action) => handleActionClick(action)}
