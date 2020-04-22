@@ -64,38 +64,36 @@ function App() {
         setSecondNum(arr);
         setView(arr);
       }
-    }
-  };
-
-  const handleActionClick = (val) => {
-    if (val === 'AC' || val === 'C') {
-      setFirstNum([]);
-      setSecondNum([]);
-      setView([]);
-    } else if ('+-*/'.includes(val)) {
-      setAction(val);
-    } else if (val === '+/-') {
-      if (!action && firstNum[0] !== '-') {
-        setFirstNum((firstNum) => ['-', ...firstNum]);
-      } else if (!action) {
-        setFirstNum((firstNum) => {
-          const arr = firstNum.slice(1);
-          setFirstNum(arr);
-        });
-      } else if (action && secondNum[0] !== '-') {
-        setSecondNum((secondNum) => ['-', ...secondNum]);
-      } else {
-        const arr = secondNum.slice(1);
-        setSecondNum(arr);
+    } else {
+      if (val === 'AC' || val === 'C') {
+        setFirstNum([]);
+        setSecondNum([]);
+        setView([]);
+      } else if ('+-/*'.includes(val)) {
+        setAction(val);
+      } else if (val === '+/-') {
+        if (!action && firstNum[0] !== '-') {
+          setFirstNum((firstNum) => ['-', ...firstNum]);
+        } else if (!action) {
+          setFirstNum((firstNum) => {
+            const arr = firstNum.slice(1);
+            setFirstNum(arr);
+          });
+        } else if (action && secondNum[0] !== '-') {
+          setSecondNum((secondNum) => ['-', ...secondNum]);
+        } else {
+          const arr = secondNum.slice(1);
+          setSecondNum(arr);
+        }
+      } else if (val === '=') {
+        const first = numify(firstNum);
+        const second = numify(secondNum);
+        const total = [operator[action](first, second).toString()];
+        setView(total);
+        setFirstNum(total);
+        setSecondNum([]);
+        setAction(null);
       }
-    } else if (val === '=') {
-      const first = numify(firstNum);
-      const second = numify(secondNum);
-      const total = [operator[action](first, second).toString()];
-      setView(total);
-      setFirstNum(total);
-      setSecondNum([]);
-      setAction(null);
     }
   };
 
