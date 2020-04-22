@@ -3,7 +3,6 @@ import './App.css';
 import { operator, numify } from './helpers';
 
 import View from './View';
-import Button from './Button';
 import ButtonList from './ButtonList';
 
 function App() {
