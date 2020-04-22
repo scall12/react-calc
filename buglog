@@ -7,3 +7,5 @@
 3. If the returned total is negative, then the array passed to the 
     firstNum only has one element (which is negative). Inverting the sign 
     then breaks the next calculation.
+4. After calculation, with state set for firstNum, if the invert sign is pressed,
+     it inverts the sign on the firstNum state, but not the view.
