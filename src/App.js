@@ -16,44 +16,32 @@ function Button(props) {
 }
 
 function ButtonList(props) {
-  const renderNumButton = (name) => {
-    return (
-      <Button onClick={() => props.onNumClick(name)} name={name} class="num" />
-    );
-  };
-
-  const renderActionButton = (action) => {
-    return (
-      <Button
-        onClick={() => props.onActionClick(action)}
-        name={action}
-        class="action"
-      />
-    );
+  const renderButton = (name) => {
+    return <Button onClick={() => props.onNumClick(name)} name={name} />;
   };
 
   return (
     <>
       <div id="button-list">
-        {renderActionButton('AC')}
-        {renderActionButton('+/-')}
-        {renderActionButton('%')}
-        {renderActionButton('/')}
-        {renderNumButton('7')}
-        {renderNumButton('8')}
-        {renderNumButton('9')}
-        {renderActionButton('*')}
-        {renderNumButton('4')}
-        {renderNumButton('5')}
-        {renderNumButton('6')}
-        {renderActionButton('-')}
-        {renderNumButton('1')}
-        {renderNumButton('2')}
-        {renderNumButton('3')}
-        {renderActionButton('+')}
-        {renderNumButton('0')}
-        {renderNumButton('.')}
-        {renderActionButton('=')}
+        {renderButton('AC')}
+        {renderButton('+/-')}
+        {renderButton('%')}
+        {renderButton('/')}
+        {renderButton('7')}
+        {renderButton('8')}
+        {renderButton('9')}
+        {renderButton('*')}
+        {renderButton('4')}
+        {renderButton('5')}
+        {renderButton('6')}
+        {renderButton('-')}
+        {renderButton('1')}
+        {renderButton('2')}
+        {renderButton('3')}
+        {renderButton('+')}
+        {renderButton('0')}
+        {renderButton('.')}
+        {renderButton('=')}
       </div>
     </>
   );
@@ -119,10 +107,7 @@ function App() {
         <View display={firstNum} />
         <View display={secondNum} />
         <View display={view} />
-        <ButtonList
-          onNumClick={(name) => handleNumClick(name)}
-          onActionClick={(action) => handleActionClick(action)}
-        />
+        <ButtonList onClick={(name) => handleNumClick(name)} />
       </div>
     </>
   );
