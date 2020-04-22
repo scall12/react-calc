@@ -53,15 +53,13 @@ function App() {
   const [secondNum, setSecondNum] = useState([]);
   const [action, setAction] = useState(null);
 
-  const handleNumClick = (val) => {
-    if (!action) {
-      if (val.match(/\d/) || val === '.') {
+  const handleClick = (val) => {
+    if (val.match(/\d/) || val === '.') {
+      if (!action) {
         const arr = [...firstNum, val];
         setFirstNum(arr);
         setView(arr);
-      }
-    } else {
-      if (val.match(/\d/) || val === '.') {
+      } else {
         const arr = [...secondNum, val];
         setSecondNum(arr);
         setView(arr);
@@ -107,7 +105,7 @@ function App() {
         <View display={firstNum} />
         <View display={secondNum} />
         <View display={view} />
-        <ButtonList onClick={(name) => handleNumClick(name)} />
+        <ButtonList onClick={(name) => handleClick(name)} />
       </div>
     </>
   );
