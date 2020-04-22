@@ -2,32 +2,9 @@ import React, { useState } from 'react';
 import './App.css';
 import { operator, numify } from './helpers';
 
-function View(props) {
-  const number = numify(props.display) || 0;
-  return <div>{number}</div>;
-}
-
-function Button(props) {
-  return (
-    <button className={props.class} onClick={props.onClick}>
-      {props.name}
-    </button>
-  );
-}
-
-function ButtonList(props) {
-  const nameList = 'AC,+/-,%,/,7,8,9,*,4,5,6,-,1,2,3,+,0,.,=';
-
-  const renderButton = (name) => {
-    return <Button onClick={() => props.onClick(name)} name={name} />;
-  };
-
-  const listItems = nameList.split(',').map((name) => {
-    return renderButton(name);
-  });
-
-  return <div id="button-list">{listItems}</div>;
-}
+import View from './View';
+import Button from './Button';
+import ButtonList from './ButtonList';
 
 function App() {
   const [view, setView] = useState([]);
