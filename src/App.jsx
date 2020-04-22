@@ -28,22 +28,27 @@ function App() {
       if (val === 'AC' || val === 'C') {
         setFirstNum([]);
         setSecondNum([]);
+        setAction(null);
         setView([]);
       } else if ('+-/*'.includes(val)) {
         setAction(val);
       } else if (val === '+/-') {
         if (!action && firstNum[0] !== '-') {
-          setFirstNum((firstNum) => ['-', ...firstNum]);
+          const arr = ['-', ...firstNum];
+          setFirstNum(arr);
+          setView(arr);
         } else if (!action) {
-          setFirstNum((firstNum) => {
-            const arr = firstNum.slice(1);
-            setFirstNum(arr);
-          });
+          const arr = firstNum.slice(1);
+          setFirstNum(arr);
+          setView(arr);
         } else if (action && secondNum[0] !== '-') {
-          setSecondNum((secondNum) => ['-', ...secondNum]);
+          const arr = ['-', ...secondNum];
+          setSecondNum(arr);
+          setView(arr);
         } else {
           const arr = secondNum.slice(1);
           setSecondNum(arr);
+          setView(arr);
         }
       } else if (val === '=') {
         const first = numify(firstNum);

@@ -8,4 +8,7 @@
     firstNum only has one element (which is negative). Inverting the sign 
     then breaks the next calculation.
 4. After calculation, with state set for firstNum, if the invert sign is pressed,
-     it inverts the sign on the firstNum state, but not the view.
+    it inverts the sign on the firstNum state, but not the view.
+    Fixed: setView when a number is inverted.
+5. If AC is pressed after an action is pressed, action state is not reset.
+    Fixed: reset action state to null when pressed.
