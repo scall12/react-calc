@@ -16,35 +16,17 @@ function Button(props) {
 }
 
 function ButtonList(props) {
+  const nameList = 'AC,+/-,%,/,7,8,9,*,4,5,6,-,1,2,3,+,0,.,=';
+
   const renderButton = (name) => {
-    return <Button onClick={() => props.onNumClick(name)} name={name} />;
+    return <Button onClick={() => props.onClick(name)} name={name} />;
   };
 
-  return (
-    <>
-      <div id="button-list">
-        {renderButton('AC')}
-        {renderButton('+/-')}
-        {renderButton('%')}
-        {renderButton('/')}
-        {renderButton('7')}
-        {renderButton('8')}
-        {renderButton('9')}
-        {renderButton('*')}
-        {renderButton('4')}
-        {renderButton('5')}
-        {renderButton('6')}
-        {renderButton('-')}
-        {renderButton('1')}
-        {renderButton('2')}
-        {renderButton('3')}
-        {renderButton('+')}
-        {renderButton('0')}
-        {renderButton('.')}
-        {renderButton('=')}
-      </div>
-    </>
-  );
+  const listItems = nameList.split(',').map((name) => {
+    return renderButton(name);
+  });
+
+  return <div id="button-list">{listItems}</div>;
 }
 
 function App() {
@@ -55,6 +37,7 @@ function App() {
 
   const handleClick = (val) => {
     if (val.match(/\d/) || val === '.') {
+      // number button press
       if (!action) {
         const arr = [...firstNum, val];
         setFirstNum(arr);
@@ -65,6 +48,7 @@ function App() {
         setView(arr);
       }
     } else {
+      // action button press
       if (val === 'AC' || val === 'C') {
         setFirstNum([]);
         setSecondNum([]);
