@@ -12,4 +12,4 @@ const findDecimal = (array) => {
   }
 };
 
-export { operator, numify };
+export { operator };
