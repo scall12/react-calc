@@ -2,7 +2,7 @@ import React from 'react';
 import Button from './Button';
 
 function ButtonList(props) {
-  const nameList = 'AC,+/-,%,/,7,8,9,*,4,5,6,-,1,2,3,+,0,.,=';
+  const nameList = 'AC,+/-,%,÷,7,8,9,x,4,5,6,-,1,2,3,+,0,.,=';
 
   const renderButton = (name) => {
     return (
