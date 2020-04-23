@@ -3,3 +3,7 @@
 3. Perform simple calculations
 4. Look like the apple calculator, as much as possible
 5. Shows decimal point with the parsed float in the viewport
+6. After turning number into percentage (any number of times) and action is chosen,
+    if the percent button is clicked again (for the second operand) the 2nd operand
+    is deleted.
+    
