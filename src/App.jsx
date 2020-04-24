@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import { operator, calculate } from './helpers';
+import { calculate } from './helpers';
 
 import View from './View';
 import ButtonList from './ButtonList';
@@ -64,7 +64,6 @@ function App() {
           setFirstNum(holder);
           setView(holder);
         } else {
-          const holder = secondNum / 100;
           setSecondNum('');
           setView(firstNum);
         }
