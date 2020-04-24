@@ -103,7 +103,7 @@ button:nth-child(4n + 3) {
 [id='actionx']:focus,
 [id='action-']:focus,
 [id='action+']:focus {
-  border-width: 2px 2px 1px 1px;
-  border-style: solid;
-  border-color: var(--view-background);
+  border-width: 2px 2px 1px 1px !important;
+  border-style: solid !important;
+  border-color: var(--view-background) !important;
 }
