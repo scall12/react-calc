@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import { operator } from './helpers';
+import { operator, calculate } from './helpers';
 
 import View from './View';
 import ButtonList from './ButtonList';
@@ -61,9 +61,7 @@ function App() {
           setView(firstNum);
         }
       } else if (val === '=') {
-        const first = parseFloat(firstNum);
-        const second = parseFloat(secondNum);
-        const total = operator[action](first, second).toString();
+        const total = calculate(firstNum, secondNum, action);
         setView(total);
         setFirstNum(total);
         setSecondNum('');

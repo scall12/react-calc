@@ -5,4 +5,11 @@ const operator = {
   '-': (x, y) => x - y,
 };
 
-export { operator };
+const calculate = (str1, str2, action) => {
+  const first = parseFloat(str1);
+  const second = parseFloat(str2);
+  const total = operator[action](first, second).toString();
+  return total;
+};
+
+export { operator, calculate };
