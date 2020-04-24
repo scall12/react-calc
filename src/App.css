@@ -32,16 +32,16 @@ button:focus {
   outline: none;
 }
 
-button:nth-child(n) {
-  border-bottom: none;
+button:nth-child(even) {
   border-left: none;
 }
-button:nth-child(n + 17) {
-  border-bottom: 1px solid var(--border-color);
+
+button:nth-child(n) {
+  border-bottom: none;
 }
 
-button:nth-child(4n + 1) {
-  border-left: 1px solid var(--border-color);
+button:nth-child(4n + 3) {
+  border-left: none;
 }
 
 .num {
@@ -62,7 +62,6 @@ button:nth-child(4n + 1) {
 
 .App {
   text-align: center;
-  border-style: solid;
   margin: auto;
 }
 
@@ -98,4 +97,13 @@ button:nth-child(4n + 1) {
 
 [id='action.']:active {
   background-color: var(--num-focus);
+}
+
+[id='action÷']:focus,
+[id='actionx']:focus,
+[id='action-']:focus,
+[id='action+']:focus {
+  border-width: 2px 2px 1px 1px;
+  border-style: solid;
+  border-color: var(--view-background);
 }
