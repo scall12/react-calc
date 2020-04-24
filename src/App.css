@@ -36,11 +36,7 @@ button:nth-child(even) {
   border-left: none;
 }
 
-<<<<<<< HEAD
 button:nth-child(n):nth-child(-n + 17) {
-=======
-button:nth-child(n) {
->>>>>>> 40074cbd89d46590cc0e5d17287e1ddfabc650dc
   border-bottom: none;
 }
 
