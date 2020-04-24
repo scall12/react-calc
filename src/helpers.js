@@ -6,8 +6,8 @@ const operator = {
 };
 
 const calculate = (str1, str2, action) => {
-  const first = parseFloat(str1);
-  const second = parseFloat(str2);
+  const first = parseFloat(str1) || 0;
+  const second = parseFloat(str2) || 0;
   const total = operator[action](first, second).toString();
   return total;
 };
