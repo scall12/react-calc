@@ -31,7 +31,15 @@ function App() {
         setAction(null);
         setView('');
       } else if ('+-÷x'.includes(val)) {
-        setAction(val);
+        if (!action) {
+          setAction(val);
+        } else {
+          const total = calculate(firstNum, secondNum, action);
+          setView(total);
+          setFirstNum(total);
+          setSecondNum('');
+          setAction(val);
+        }
       } else if (val === '+/-') {
         if (!action && firstNum[0] !== '-' && firstNum) {
           const str = '-'.concat(firstNum);
