@@ -1,6 +1,17 @@
+:root {
+  --view-background: #383539;
+  --action-background: #fd9e2b;
+  --num-background: #706668;
+  --ac-background: #4b494b;
+  --text-color: #ffffff;
+  --num-focus: #b2b7b8;
+  --action-focus: #ac5f02;
+}
+
 body {
   width: 25vw;
   height: 50vh;
+  color: var(--text-color);
 }
 
 #button-list {
@@ -10,8 +21,43 @@ body {
 }
 
 button {
-  width: 50px;
+  width: 25%;
   height: 3rem;
+  border: 1px solid var(--view-background);
+  color: var(--text-color);
+  font-size: 1.5rem;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:nth-child(n) {
+  border-bottom: none;
+  border-left: none;
+}
+button:nth-child(n + 17) {
+  border-bottom: 1px solid var(--border-color);
+}
+
+button:nth-child(4n + 1) {
+  border-left: 1px solid var(--border-color);
+}
+
+.num {
+  background-color: var(--num-background);
+}
+
+.num:active {
+  background-color: var(--num-focus);
+}
+
+.action {
+  background-color: var(--action-background);
+}
+
+.action:active {
+  background-color: var(--action-focus);
 }
 
 .App {
@@ -20,37 +66,36 @@ button {
   margin: auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#view {
+  text-align: end;
+  padding: 0.5rem;
+  font-size: 2.5rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#root {
+  background-color: var(--view-background);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#num0 {
+  width: 50%;
 }
 
-.App-link {
-  color: #61dafb;
+#actionAC,
+[id='action+/-'],
+[id='action%'] {
+  background-color: var(--ac-background);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#actionAC:active,
+[id='action+/-']:active,
+[id='action%']:active {
+  background-color: var(--num-background);
+}
+
+[id='action.'] {
+  background-color: var(--num-background);
+}
+
+[id='action.']:active {
+  background-color: var(--num-focus);
 }
