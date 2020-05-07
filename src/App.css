@@ -9,8 +9,8 @@
 }
 
 body {
-  width: 25vw;
-  height: 50vh;
+  width: 12rem;
+  height: 3rem;
   color: var(--text-color);
 }
 
