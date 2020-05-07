@@ -2,7 +2,7 @@
   "name": "calc",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://scall12.github.io/calc",
+  "homepage": "https://scall12.github.io/react-calc",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
